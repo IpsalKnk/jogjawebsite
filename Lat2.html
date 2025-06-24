@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Luas Trapesium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Kalkulator Luas Trapesium</h2>
+    <form onsubmit="hitungLuas(event)">
+        <label for="atas">Sisi Atas (a):</label>
+        <input type="number" id="atas" required>
+        <label for="bawah">Sisi Bawah (b):</label>
+        <input type="number" id="bawah" required>
+        <label for="tinggi">Tinggi (t):</label>
+        <input type="number" id="tinggi" required>
+        <input type="submit" value="Hitung Luas">
+    </form>
+
+    <div id="output" class="result" style="display:none;"></div>
+
+    <script>
+        function hitungLuas(event) {
+            event.preventDefault();
+            const a = parseFloat(document.getElementById('atas').value);
+            const b = parseFloat(document.getElementById('bawah').value);
+            const t = parseFloat(document.getElementById('tinggi').value);
+
+            if (isNaN(a) || isNaN(b) || isNaN(t)) {
+                alert("Harap masukkan semua nilai dengan benar.");
+                return;
+            }
+
+            const luas = 0.5 * (a + b) * t;
+            const output = document.getElementById('output');
+            output.style.display = 'block';
+            output.innerHTML = `Luas Trapesium: <strong>${luas}</strong>`;
+        }
+    </script>
+
+</body>
+</html>
